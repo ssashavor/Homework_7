@@ -21,10 +21,10 @@ type Headers struct {
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	user := User{
-		r.Host,
-		r.Header.Get("UserAgent"),
-		r.URL.Path,
-		&Headers{r.Header.Get("UserAgent"),
+		Host: r.Host,
+		UserAgent: r.Header.Get("User-agent"),
+		RequestUri: r.URL.Path,
+		Headers: &Headers{r.Header.Get("User-agent"),
 			r.Header.Get("Accept")},
 	}
 	userJson, err := json.Marshal(user)
