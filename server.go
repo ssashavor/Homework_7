@@ -9,22 +9,22 @@ import (
 
 type User struct {
 	Host        string   `json:"host"`
-	User_agent  string   `json:"user_agent"`
-	Request_uri string   `json:"request_uri"`
+	UserAgent  string   `json:"userAgent"`
+	RequestUri string   `json:"requestUri"`
 	Headers     *Headers `json:"headers"`
 }
 
 type Headers struct {
-	User_agent string `json:"User_agent"`
+	UserAgent string `json:"UserAgent"`
 	Accept     string `json:"Accept"`
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	user := User{
 		r.Host,
-		r.Header.Get("User-agent"),
+		r.Header.Get("UserAgent"),
 		r.URL.Path,
-		&Headers{r.Header.Get("User-agent"),
+		&Headers{r.Header.Get("UserAgent"),
 			r.Header.Get("Accept")},
 	}
 	userJson, err := json.Marshal(user)
