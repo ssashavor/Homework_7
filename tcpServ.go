@@ -10,22 +10,21 @@ import (
 )
 
 func handleConnection(conn net.Conn) {
+	var response string
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
-		conn.Write([]byte(multipliedInput(scanner.Text())))
+		num, err := strconv.Atoi(scanner.Text())
+		if err == nil {
+			response = strconv.Itoa(num * 2)
+		} else {
+			response = strings.ToUpper(scanner.Text())
+		}
+		conn.Write([]byte(response))
 	}
 	if err := scanner.Err(); err != nil {
 		fmt.Errorf("Scanning error", scanner.Err())
 	}
 
-}
-
-func multipliedInput(input string) string {
-	num, err := strconv.Atoi(input)
-	if err == nil {
-		return strconv.Itoa(num * 2)
-	}
-	return strings.ToUpper(input)
 }
 
 func main() {
