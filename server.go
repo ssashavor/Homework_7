@@ -29,7 +29,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	userJson, err := json.Marshal(user)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		http.Error(w, "err", http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
