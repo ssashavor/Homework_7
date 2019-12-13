@@ -30,7 +30,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	userJson, err := json.Marshal(user)
 	if err != nil {
 		fmt.Println(err)
-		http.Error(w, "err", http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
