@@ -8,15 +8,15 @@ import (
 )
 
 type User struct {
-	Host        string   `json:"host"`
+	Host       string   `json:"host"`
 	UserAgent  string   `json:"userAgent"`
 	RequestUri string   `json:"requestUri"`
-	Headers     *Headers `json:"headers"`
+	Headers    *Headers `json:"headers"`
 }
 
 type Headers struct {
 	UserAgent string `json:"UserAgent"`
-	Accept     string `json:"Accept"`
+	Accept    string `json:"Accept"`
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
