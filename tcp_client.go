@@ -17,7 +17,11 @@ func main() {
 	for {
 		fmt.Print("Enter your message: ")
 		reader := bufio.NewReader(os.Stdin)
-		text, _ := reader.ReadString('\n')
+		text, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println(err)
+			return 
+		}
 		if text == "\n" {
 			continue
 		}
