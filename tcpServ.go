@@ -22,7 +22,7 @@ func handleConnection(conn net.Conn) {
 		conn.Write([]byte(response))
 	}
 	if err := scanner.Err(); err != nil {
-		fmt.Errorf("Scanning error", scanner.Err())
+		fmt.Errorf("Scanning error", err)
 	}
 
 }
