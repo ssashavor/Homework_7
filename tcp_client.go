@@ -37,7 +37,7 @@ func main() {
 		buff := make([]byte, 1024)
 		_, err := conn.Read(buff)
 		if err != nil {
-			fmt.Errorf("Response error")
+			fmt.Println(err)
 		}
 		fmt.Println(string(buff))
 	}
